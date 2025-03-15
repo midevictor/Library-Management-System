@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="com.obiscr.chatgpt.settings.EasyCodeState">
+    <option name="projectFiles" value="$PROJECT_DIR$/src/main/java/org/example/members/Member.java;C:/Users/user/IdeaProjects/Library_Management_System/src/main/java/org/example/members/MemberDAO.java;C:/Users/user/IdeaProjects/Library_Management_System/src/main/java/org/example/members/MemberDAOImpl.java;C:/Users/user/IdeaProjects/Library_Management_System/src/main/java/org/example/members/MemeberManager.java;C:/Users/user/IdeaProjects/Library_Management_System/src/main/java/org/example/Main.java;C:/Users/user/IdeaProjects/Library_Management_System/README.md" />
+  </component>
+</project>
