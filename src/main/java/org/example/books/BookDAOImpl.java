@@ -74,25 +74,51 @@ public class BookDAOImpl implements BookDAO {
     }
 
     @Override
+//    public Book getBookById(int book_id) {
+//        String sql = "SELECT * FROM book WHERE book_id = ?";
+//        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+//            ps.setInt(1, book_id);
+//            try (ResultSet rs = ps.executeQuery()) {
+//                if (rs.next()) {
+//                    System.out.println("Book ID: " + rs.getInt("book_id"));
+//                    System.out.println("Title: " + rs.getString("title"));
+//                    System.out.println("Author: " + rs.getString("author"));
+//                    System.out.println("Genre: " + rs.getString("genre"));
+//                    System.out.println("Available Copies: " + rs.getInt("available_copies"));
+//                } else {
+//                    System.out.println("No book record found with id: " + book_id);
+//                }
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//
+//        }
+//        return null;
+//    }
+
     public Book getBookById(int book_id) {
-        String sql = "SELECT * FROM book WHERE book_id = ?";
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        String SQL = "SELECT * FROM book WHERE book_id = ?";
+        try (PreparedStatement ps = connection.prepareStatement(SQL)) {
             ps.setInt(1, book_id);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    System.out.println("Book ID: " + rs.getInt("book_id"));
-                    System.out.println("Title: " + rs.getString("title"));
-                    System.out.println("Author: " + rs.getString("author"));
-                    System.out.println("Genre: " + rs.getString("genre"));
-                    System.out.println("Available Copies: " + rs.getInt("available_copies"));
-                } else {
-                    System.out.println("No book record found with id: " + book_id);
-                }
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Book book = new Book(
+                        rs.getInt("book_id"),
+                        rs.getString("title"),
+                        rs.getString("author"),
+                        rs.getString("genre"),
+                        rs.getInt("available_copies")
+                );
+                System.out.println("Book fetched: " + book);
+                return book;
             }
         } catch (SQLException e) {
             e.printStackTrace();
-
         }
         return null;
     }
+
+
+
+
 }

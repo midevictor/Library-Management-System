@@ -73,19 +73,41 @@ public class MemberDAOImpl implements  MemberDAO {
     }
 
     @Override
+//    public Member getMemberById(int member_id) {
+//        String sql = "SELECT * FROM member WHERE member_id = ?";
+//        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+//            ps.setInt(1, member_id);
+//            try (ResultSet rs = ps.executeQuery()) {
+//                if (rs.next()) {
+//                    System.out.println("Member ID: " + rs.getInt("member_id"));
+//                    System.out.println("Name: " + rs.getString("name"));
+//                    System.out.println("Email: " + rs.getString("email"));
+//                    System.out.println("Phone: " + rs.getString("phone"));
+//                } else {
+//                    System.out.println("No member record found ith id: " + member_id);
+//                }
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
+
+
     public Member getMemberById(int member_id) {
-        String sql = "SELECT * FROM member WHERE member_id = ?";
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        String SQL = "SELECT * FROM member WHERE member_id = ?";
+        try (PreparedStatement ps = connection.prepareStatement(SQL)) {
             ps.setInt(1, member_id);
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    System.out.println("Member ID: " + rs.getInt("member_id"));
-                    System.out.println("Name: " + rs.getString("name"));
-                    System.out.println("Email: " + rs.getString("email"));
-                    System.out.println("Phone: " + rs.getString("phone"));
-                } else {
-                    System.out.println("No member record found ith id: " + member_id);
-                }
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                Member member = new Member(
+                        rs.getInt("member_id"),
+                        rs.getString("name"),
+                        rs.getString("email"),
+                        rs.getString("phone")
+                );
+                System.out.println("Member fetched: " + member);
+                return member;
             }
         } catch (SQLException e) {
             e.printStackTrace();

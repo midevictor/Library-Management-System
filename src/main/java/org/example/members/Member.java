@@ -51,4 +51,10 @@ public class Member {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+
+    @Override
+    public String toString() {
+        return "Member ID: " + member_id + ", Name: " + name + ", Email: " + email + ", Phone: " + phone;
+    }
 }
