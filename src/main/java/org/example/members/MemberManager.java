@@ -88,8 +88,8 @@ public class MemberManager {
                 Class.forName("org.postgresql.Driver");
                 try (Connection connection = DriverManager.getConnection(url, user, password);
                      BufferedReader reader = new BufferedReader(new FileReader(file))) {
-                    memberRecords.clear();
-                    memberMap.clear();
+//                    memberRecords.clear();
+//                    memberMap.clear();
 
                     String line;
                     while ((line = reader.readLine()) != null) {
